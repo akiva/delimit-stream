@@ -1,0 +1,33 @@
+{
+  "name": "frame-stream",
+  "version": "1.0.0",
+  "description": "[![npm][npm-image]][npm-url]   [![npm version][npm-version-image]][npm-version-url]   [![travis][travis-image]][travis-url]   [![{{stability}}][stability-image]][stability-url]",
+  "main": "index.js",
+  "dependencies": {
+    "concat-stream": "^1.6.0",
+    "tape": "^4.8.0",
+    "through2": "^2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akiva/frame-stream.git"
+  },
+  "keywords": [
+    "stream",
+    "frame",
+    "split",
+    "extract",
+    "delimit",
+    "delimiter"
+  ],
+  "author": "Akiva Levy <akiva@sixthirteen.co> (http://sixthirteen.co/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akiva/frame-stream/issues"
+  },
+  "homepage": "https://github.com/akiva/frame-stream#readme"
+}
