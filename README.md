@@ -1,16 +1,16 @@
-# Frame Stream
+# Filter Frame Stream
 
 [![npm][npm-image]][npm-url]  
 [![npm version][npm-version-image]][npm-version-url]  
 [![travis][travis-image]][travis-url]  
-[![{{stability}}][stability-image]][stability-url]  
+[![stable][stability-image]][stability-url]  
 
-[npm-image]: https://nodei.co/npm/frame-stream.png
-[npm-url]: https://www.npmjs.com/package/frame-stream
-[npm-version-image]: https://badge.fury.io/js/frame-stream.png
-[npm-version-url]: http://badge.fury.io/js/frame-stream
-[travis-image]: https://secure.travis-ci.org/akiva/frame-stream.png
-[travis-url]: https://travis-ci.org/akiva/frame-stream
+[npm-image]: https://nodei.co/npm/filter-frame-stream.png
+[npm-url]: https://www.npmjs.com/package/filter-frame-stream
+[npm-version-image]: https://badge.fury.io/js/filter-frame-stream.png
+[npm-version-url]: http://badge.fury.io/js/filter-frame-stream
+[travis-image]: https://secure.travis-ci.org/akiva/filter-frame-stream.png
+[travis-url]: https://travis-ci.org/akiva/filter-frame-stream
 [stability-image]: http://badges.github.io/stability-badges/dist/stable.svg
 [stability-url]: http://github.com/badges/stability-badges
 
@@ -26,21 +26,21 @@ such as JPEG images.
 ## Installation
 
 ```bash
-npm install --save frame-stream
+npm install --save filter-frame-stream
 ```
 
 ## Usage
 
 ```javascript
-const frameStream = require('frame-stream')
+const filterFrame = require('filter-frame-stream')
 const JSONStream = require('JSONStream')
 
 process.stdin
-  .pipe(frameStream())
+  .pipe(filterFrame())
   .pipe(JSONStream.stringify(false))
   .pipe(process.stdout)
 ```
 
 ## License
 
-MIT, see [LICENSE](LICENSE) for details.
+ISC, see [LICENSE](LICENSE) for details.

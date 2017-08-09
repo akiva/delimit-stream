@@ -1,7 +1,7 @@
 {
-  "name": "frame-stream",
+  "name": "filter-frame-stream",
   "version": "1.0.0",
-  "description": "[![npm][npm-image]][npm-url]   [![npm version][npm-version-image]][npm-version-url]   [![travis][travis-image]][travis-url]   [![{{stability}}][stability-image]][stability-url]",
+  "description": "Filter data frames from a stream of buffers by a head marker and optional tail—or trailing—marker, keeping these bytes intact in the returned chunks. This is useful when splitting up a stream of data with embedded frames used by some protocols (especially useful for variable length frame protocols), or even for extracting other data, such as JPEG images.",
   "main": "index.js",
   "dependencies": {
     "concat-stream": "^1.6.0",
@@ -14,11 +14,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/akiva/frame-stream.git"
+    "url": "git+https://github.com/akiva/filter-frame-stream.git"
   },
   "keywords": [
-    "stream",
+    "filter",
     "frame",
+    "stream",
     "split",
     "extract",
     "delimit",
@@ -27,7 +28,7 @@
   "author": "Akiva Levy <akiva@sixthirteen.co> (http://sixthirteen.co/)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/akiva/frame-stream/issues"
+    "url": "https://github.com/akiva/filter-frame-stream/issues"
   },
-  "homepage": "https://github.com/akiva/frame-stream#readme"
+  "homepage": "https://github.com/akiva/filter-frame-stream#readme"
 }

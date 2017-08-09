@@ -1,6 +1,6 @@
 const test = require('tape')
 const Readable = require('stream').Readable
-const frameStream = require('.')
+const filterFrame = require('.')
 const through = require('through2')
 
 const lyrics = '♪Fiddly digits, itchy britches♪I love you all'
@@ -11,7 +11,7 @@ test('Frame start accepts a buffer', function (t) {
   const results = []
   let i = 0
   rs
-    .pipe(frameStream(Buffer.from('♪')))
+    .pipe(filterFrame(Buffer.from('♪')))
     .pipe(through(function (chunk, enc, done) {
       i++
       results.push(chunk.toString())
@@ -31,7 +31,7 @@ test('Frame start accepts a string', function (t) {
   const results = []
   let i = 0
   rs
-    .pipe(frameStream('♪'))
+    .pipe(filterFrame('♪'))
     .pipe(through(function (chunk, enc, done) {
       i++
       results.push(chunk.toString())
@@ -51,7 +51,7 @@ test('Frame start accepts a string with encoding', function (t) {
   const results = []
   let i = 0
   rs
-    .pipe(frameStream('e299aa', 'hex'))
+    .pipe(filterFrame('e299aa', 'hex'))
     .pipe(through(function (chunk, enc, done) {
       i++
       results.push(chunk.toString())
@@ -71,7 +71,7 @@ test('Frame start defaults to null (0x00)', function (t) {
   const results = []
   let i = 0
   rs
-    .pipe(frameStream())
+    .pipe(filterFrame())
     .pipe(through(function (chunk, enc, done) {
       i++
       results.push(chunk.toString())
@@ -91,7 +91,7 @@ test('Frame end accepts a buffer', function (t) {
   const results = []
   let i = 0
   rs
-    .pipe(frameStream('\u0000', Buffer('\xff', 'ascii')))
+    .pipe(filterFrame('\u0000', Buffer('\xff', 'ascii')))
     .pipe(through(function (chunk, enc, done) {
       i++
       results.push(chunk.toString())
@@ -111,7 +111,7 @@ test('Frame end accepts a string', function (t) {
   const results = []
   let i = 0
   rs
-    .pipe(frameStream('\u0000', '�'))
+    .pipe(filterFrame('\u0000', '�'))
     .pipe(through(function (chunk, enc, done) {
       i++
       results.push(chunk.toString())
@@ -131,7 +131,7 @@ test('Frame end accepts a string with encoding', function (t) {
   const results = []
   let i = 0
   rs
-    .pipe(frameStream('00', 'ff', 'hex'))
+    .pipe(filterFrame('00', 'ff', 'hex'))
     .pipe(through(function (chunk, enc, done) {
       i++
       results.push(chunk.toString())

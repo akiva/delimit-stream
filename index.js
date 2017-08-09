@@ -1,6 +1,6 @@
 const Transform = require('stream').Transform || require('readable-stream').Transform
 
-function FrameStream(start, end, enc) {
+function FilterFrameStream(start, end, enc) {
   start = start !== undefined ? start : Buffer.from('\u0000')
   end = end || false
   if (!enc) {
@@ -10,7 +10,8 @@ function FrameStream(start, end, enc) {
     }
     else enc = 'utf8'
   }
-  if (!(this instanceof FrameStream)) return new FrameStream(start, end, enc)
+  if (!(this instanceof FilterFrameStream))
+    return new FilterFrameStream(start, end, enc)
   Transform.call(this, { objectMode: false })
   this.buf = Buffer.alloc(0)
   this.head = Buffer.isBuffer(start) ? start : Buffer.from(start, enc)
@@ -19,9 +20,9 @@ function FrameStream(start, end, enc) {
     : Buffer.isBuffer(end) ? end : Buffer.from(end, enc)
 }
 
-FrameStream.prototype = Object.create(Transform.prototype)
+FilterFrameStream.prototype = Object.create(Transform.prototype)
 
-FrameStream.prototype._transform = function transform (chunk, enc, done) {
+FilterFrameStream.prototype._transform = function transform (chunk, enc, done) {
   this.buf = Buffer.concat([this.buf, chunk])
   let start, end, eof
   while ((start = this.buf.indexOf(this.head)) > -1) {
@@ -43,8 +44,8 @@ FrameStream.prototype._transform = function transform (chunk, enc, done) {
   done()
 }
 
-FrameStream.prototype._flush = function flush (done) {
+FilterFrameStream.prototype._flush = function flush (done) {
   done(null, this.buf)
 }
 
-module.exports = FrameStream
+module.exports = FilterFrameStream
