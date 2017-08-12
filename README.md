@@ -31,15 +31,35 @@ npm install --save filter-frame-stream
 
 ## Usage
 
+To filter the frame buffers you desire, provide your frame start/head
+and end/tail as arguments, along with an optional encoding. The
+arguments are as follows:
+
+```
+filterFrame(start, end, enc)
+```
+
+If not provided, `start` will default to `0x00`. Without specifying an 
+`end` value (or if `end` is set to `false`) the buffers will include 
+everything up until the next occurrence of the `start` delimiter/marker.
+
+Both `start` and `end` may be either a string or buffer. If not
+provided, `enc` will default to `utf8`, although any node-compatible
+encoding works.
+
+The following is a silly example of how you would filter all websocket 
+frames:
+
 ```javascript
 const filterFrame = require('filter-frame-stream')
 const JSONStream = require('JSONStream')
 
 process.stdin
-  .pipe(filterFrame())
-  .pipe(JSONStream.stringify(false))
+  .pipe(filterFrame(Buffer.from('00', 'FF', 'hex')))
   .pipe(process.stdout)
 ```
+
+For more examples, see the [tests](tests.js).
 
 ## License
 

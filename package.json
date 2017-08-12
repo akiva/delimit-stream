@@ -3,12 +3,11 @@
   "version": "1.0.1",
   "description": "Filter data frames from a stream of buffers by a head marker and optional tail—or trailing—marker, keeping these bytes intact in the returned chunks. This is useful when splitting up a stream of data with embedded frames used by some protocols (especially useful for variable length frame protocols), or even for extracting other data, such as JPEG images.",
   "main": "index.js",
-  "dependencies": {
-    "concat-stream": "^1.6.0",
+  "dependencies": {},
+  "devDependencies": {
     "tape": "^4.8.0",
     "through2": "^2.0.3"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "node test.js"
   },
