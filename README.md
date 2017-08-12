@@ -52,14 +52,13 @@ frames:
 
 ```javascript
 const filterFrame = require('filter-frame-stream')
-const JSONStream = require('JSONStream')
 
 process.stdin
   .pipe(filterFrame(Buffer.from('00', 'FF', 'hex')))
   .pipe(process.stdout)
 ```
 
-For more examples, see the [tests](tests.js).
+For more examples, see the [tests](test.js).
 
 ## License
 
